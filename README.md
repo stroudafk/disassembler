@@ -84,11 +84,11 @@ https://www.figma.com/file/5PtvvLiOsV3h5nBRRjoCL9/EDC-App?node-id=0%3A1
 
 ## Schema
 ### Data Models
-****
+**Input**
 
 Property | Type | Description | 
 |---|---|---|
- | pointer to user | post creator | 
+inputf | blob object | input file | 
 
 
 ## Third Party
@@ -97,4 +97,5 @@ Property | Type | Description |
 
 ## **Assets**
 - [Color way] (https://git.txstate.edu/sts100/proj3339/blob/master/files/media/color_scheme.PNG)
-- [File Upload] <div>Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+<div>Icons made by <a href="https://www.flaticon.com/authors/bqlqn" title="bqlqn">bqlqn</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
