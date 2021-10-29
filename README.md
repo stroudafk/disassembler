@@ -79,6 +79,8 @@ Users can:
     * has list of all saved/liked posts
  
 ## Wireframes
+![Color way](https://git.txstate.edu/sts100/proj3339/blob/master/files/media/color_scheme.PNG)
+![Homepage](https://git.txstate.edu/sts100/proj3339/blob/master/files/media/homepage.png)
 https://www.figma.com/file/5PtvvLiOsV3h5nBRRjoCL9/EDC-App?node-id=0%3A1
 
 
@@ -96,6 +98,5 @@ inputf | blob object | input file |
 [colormind](http://colormind.io/)
 
 ## **Assets**
-- [Color way] (https://git.txstate.edu/sts100/proj3339/blob/master/files/media/color_scheme.PNG)
-
+- [Colormind] (http://colormind.io/)
 <div>Icons made by <a href="https://www.flaticon.com/authors/bqlqn" title="bqlqn">bqlqn</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
