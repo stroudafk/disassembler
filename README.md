@@ -83,12 +83,12 @@ https://www.figma.com/file/5PtvvLiOsV3h5nBRRjoCL9/EDC-App?node-id=0%3A1
 
 
 ## Schema
-### Models
+### Data Models
 ****
 
 Property | Type | Description | 
 |---|---|---|
-author | pointer to user | post creator | 
+ | pointer to user | post creator | 
 
 
 ## Third Party
@@ -97,4 +97,4 @@ author | pointer to user | post creator |
 
 ## **Assets**
 - [Color way] (https://git.txstate.edu/sts100/proj3339/blob/master/files/media/color_scheme.PNG)
-
+- [File Upload] <div>Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
