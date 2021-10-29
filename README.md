@@ -8,9 +8,10 @@ CS3339 Disassembler
 
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
+2. [Demos](#Demos)
+3. [Product Spec](#Product-Spec)
+4. [Wireframes](#Wireframes)
+5. [Schema](#Schema)
 
 ## Overview
 ### Description
@@ -22,6 +23,9 @@ Use the Super Cool Disassembler That does Cool Things™ to cheat on your assemb
 - **Story:** allows users to share their EDC combinations
 - **Market:** Those who are interested in creating a program similar to one they already have.
 - **Scope:** centralize one portable tool for translating machine code into human-readable format (MIPS instructions) 
+
+## Demos
+Drag and drop a txt file into the file field on the left. Don't have a txt file? Convert your object file to txt file using this C++ program. View MIPS instructions on the right. *Note that there currently is no implementation of pseudoinstructions.*
 
 ## Product Spec
 
@@ -38,6 +42,9 @@ Use the Super Cool Disassembler That does Cool Things™ to cheat on your assemb
 - [ ] user can type custom location or use google autocomplete to add location to posts
 
 **Optional Nice-to-have Features**
+- [ ] add animation for processes that may take a while
+- [ ] add transition animation to smooth out abrupt changes
+
 Users can: 
 - [ ] download output file
 - [ ] click on an instruction type to see more info
@@ -96,7 +103,8 @@ inputf | blob object | input file |
 ## Third Party
 
 [colormind](http://colormind.io/)
+<div><a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 ## **Assets**
-- [Colormind] (http://colormind.io/)
+<div><a href="https://www.flaticon.com/authors/bqlqn" title="Colormind"></div>
 <div>Icons made by <a href="https://www.flaticon.com/authors/bqlqn" title="bqlqn">bqlqn</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
