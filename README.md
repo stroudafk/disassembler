@@ -29,30 +29,30 @@ Use the Super Cool Disassembler That does Cool Things™ to cheat on your assemb
 
 **Project Feature Goals**
 
-- [] Ability to convert a .bin file to a .txt file
-- [] Ability to use file picker to upload a .txt file as input
-- [] Users can see 
-- [] users can like posts
-- [] users can search through post descriptions
-- [] users can mark items in the photos and add label to them
-- [] user can type custom location or use google autocomplete to add location to posts
+- [ ] Ability to convert a .bin file to a .txt file
+- [ ] Ability to use file picker to upload a .txt file as input
+- [ ] Users can see 
+- [ ] users can like posts
+- [ ] users can search through post descriptions
+- [ ] users can mark items in the photos and add label to them
+- [ ] user can type custom location or use google autocomplete to add location to posts
 
 **Optional Nice-to-have Features**
 Users can: 
-- [] download output file
-- [] click on an instruction type to see more info
-- [] drag and drop a file
-- [] upload multiple files
-- [] users can see multiple outputs
-- [] clear output
-- [] provide typed machine snippets as input
-- [] R, I, J, and FR instructions are highlighted different colors
-- [] hover over disassembled instructions to view their 
-  - [] type 
-  - [] instruction format
-  - [] opcode
-- [] fix autolayout for mobile 
-  - [] allow code snippets from mobile
+- [ ] download output file
+- [ ] click on an instruction type to see more info
+- [ ] drag and drop a file
+- [ ] upload multiple files
+- [ ] users can see multiple outputs
+- [ ] clear output
+- [ ] provide typed machine snippets as input
+- [ ] R, I, J, and FR instructions are highlighted different colors
+- [ ] hover over disassembled instructions to view their 
+  - [ ] type 
+  - [ ] instruction format
+  - [ ] opcode
+- [ ] fix autolayout for mobile 
+  - [ ] allow code snippets from mobile
 
 ### 2. Screen Archetypes
 
@@ -95,10 +95,6 @@ author | pointer to user | post creator |
 
 [colormind](http://colormind.io/)
 
-[]()
-
-[]()
-
 ## **Assets**
-- [Color way] ()
+- [Color way] (https://git.txstate.edu/sts100/proj3339/blob/master/files/media/color_scheme.PNG)
 
