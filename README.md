@@ -88,8 +88,7 @@ Users can:
 ## Wireframes
 ![Color way](https://git.txstate.edu/sts100/proj3339/blob/master/files/media/color_scheme.PNG)
 ![Homepage](https://git.txstate.edu/sts100/proj3339/blob/master/files/media/homepage.png)
-https://www.figma.com/file/5PtvvLiOsV3h5nBRRjoCL9/EDC-App?node-id=0%3A1
-
+https://www.figma.com/file/agDKzd86V69z52OuyuFPDq/Disassembler?node-id=0%3A1
 
 ## Schema
 ### Data Models
