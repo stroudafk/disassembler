@@ -33,13 +33,9 @@ Drag and drop a txt file into the file field on the left. Don't have a txt file?
 
 **Project Feature Goals**
 
-- [ ] Ability to convert a .bin file to a .txt file
-- [ ] Ability to use file picker to upload a .txt file as input
-- [ ] Users can see 
-- [ ] users can like posts
-- [ ] users can search through post descriptions
-- [ ] users can mark items in the photos and add label to them
-- [ ] user can type custom location or use google autocomplete to add location to posts
+- [x] Ability to convert a .bin file to a .txt file
+- [x] Ability to use file picker to upload a .txt file as input
+- [x] Users can see output
 
 **Optional Nice-to-have Features**
 - [ ] add animation for processes that may take a while
@@ -48,7 +44,7 @@ Drag and drop a txt file into the file field on the left. Don't have a txt file?
 Users can: 
 - [ ] download output file
 - [ ] click on an instruction type to see more info
-- [ ] drag and drop a file
+- [x] drag and drop a file
 - [ ] upload multiple files
 - [ ] users can see multiple outputs
 - [ ] clear output
