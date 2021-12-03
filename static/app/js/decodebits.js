@@ -29,6 +29,8 @@
       console.log(instType)
     }
   }
+
+
   // the r type instructions map will hold pairs of the instruction string and 
     // funct code where the key is the hex funct, and the value is the string
   const registers = ['$zero', '$at', '$v0', '$v1', '$a0', '$a1', '$a2', '$a3', 
@@ -52,6 +54,8 @@
   //TODO: ask about lwc1, ldc1, swc1, and sdc1, then add to map
 
   const j_instructions = new Map([[0x2, 'j'], [0x3, 'jal']]);
+  const verilog_keys = new Map([['add','3rdrsrt'],['addu', '3rdrsrt'],['and','3rdrsrt'],['break', '0'],['div', '2rsrt'],['divu', '2rsrt'],['jr', '1rs'],['mfhi', '1rd'],['mflo', '1rd'],['mult','2rsrt'], ['multu', '2rsrt'],['nor', '3rdrsrt'], ['or', '3rdrsrt'], ['or', '3rdrsrt'], ['sll', '3rdrtsa'],['sllv', '3rdrtrs'],['slt','3rdrsrt'],['sltu','3rdrsrt'],['sra', '3rdrtsa'], ['srl', '3rdrtrs'],['srlv', '3rdrsrt'],['sub', '3rdrsrt'],['subu', '3rdrsrt'],['syscall', '0']])
+
   function getOpcode(instruction = '0123456'){
     return instruction.substr(0,6)
   }
@@ -91,4 +95,13 @@
   function decodeAddress(addressBits){
     return parseInt(addressBits, 16)
   }
-
+  function formatR(instr){
+    //numerical values of instruction segments
+    //5 bit segments
+    rs = 
+    rt = 
+    rd = 
+    shamt = 
+    //6 bit segment
+    funct =  
+  }
