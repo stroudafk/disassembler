@@ -1,7 +1,35 @@
 //only takes 32bit instructions
 //check that instruction.length === 32 before calling
-  
-    // the r type instructions map will hold pairs of the instruction string and 
+//  document.getElementById("btn").onclick = test();  
+  //var x = 
+  //document.getElementById('btn').onclick = test()
+  function test(){
+  console.log("testing");
+  }
+  var goBtn = document.getElementById("btn");
+  if (goBtn.addEventListener)
+    goBtn.addEventListener("click", decodeInstruction, false);
+  else if (goBtn.attachEvent)
+    goBtn.attachEvent('onclick', decodeInstruction);
+  var textInput = document.getElementById("bitstring");
+    textInput.maxlength = 32;
+  function testInput(){
+    console.log(textInput.value)
+  }
+  function decodeInstruction(){
+    console.log("decoding instruction. please wait...")
+    var bits = textInput.value 
+    if(bits.length != 32){
+      alert("Uh oh! Recieved less than 32 bits.");
+    }
+    else{
+      let opcode = getOpcode(bits);
+      let instType = getInstrType(opcode);
+      console.log(opcode)
+      console.log(instType)
+    }
+  }
+  // the r type instructions map will hold pairs of the instruction string and 
     // funct code where the key is the hex funct, and the value is the string
   const registers = ['$zero', '$at', '$v0', '$v1', '$a0', '$a1', '$a2', '$a3', 
     '$t0', '$t1', '$t2', '$t3', '$t4', '$t5', '$t6', '$t7', '$s0', '$s1', '$s2', 
