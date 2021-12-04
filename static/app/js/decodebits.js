@@ -109,7 +109,6 @@ function test(){
   function decodeAddress(addressBits){
     return parseInt(addressBits, 16)
   }
-<<<<<<< HEAD
 function dropHandler(ev) {
   console.log('File(s) dropped');
 
@@ -138,15 +137,14 @@ function dragOverHandler(ev) {
   // Prevent default behavior (Prevent file from being opened)
   ev.preventDefault();
 }
-=======
   function formatR(instr){
     //numerical values of instruction segments
     //5 bit segments
-    rs = 
-    rt = 
-    rd = 
-    shamt = 
+    //rs = 
+    //rt = 
+    //rd = 
+    //shamt = 
     //6 bit segment
-    funct =  
+    //funct =  
   }
->>>>>>> f257b18e714703f28918fec4135b10bd011172e5
+
