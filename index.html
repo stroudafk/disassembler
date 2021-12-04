@@ -1,12 +1,38 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Testing Disassembler</title>
+  <title>Disassembler Test Interface</title>
+  <h1>Disassembler Test Interface</h1>
+  <link rel="stylesheet" type="text/css" href="./static/app/css/style.css">
+  <link rel="icon" href="./static/app/css/favicon.ico" />
 </head>
 <body>
-  <label for="testinput">32 Bit string:</label>
+  <div class='ctrlPanel'>
+  <label id="bitstringLabel" for="bitstring">Enter 32 characters of 0 or 1:</label>
   <textarea id="bitstring" name="bitstring" rows="4" cols="50"></textarea>
   <button id="btn" class="favorite styled" type="button">go!</button>
-  <script src="static/app/js/decodebits.js"></script>
+  </div>
+  <div class="input">
+    <div id="canvas">
+      <div id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+        <p>drag &amp drop .txt files</p>
+      </div>
+      <div class="file-btn">
+        <form id="selector-area" method="post" enctype="multipart/form-data">
+          <div class="selector">
+            <label for="file_uploads">browse files</label>
+            <input type="file" id="file_uploads" name="file_uploads" accept=".txt">
+          </div>
+          <div>
+            <button id="submit-btn"> &gt </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="output">
+    <textarea id="output-box"></textarea>
+  </div>
+  <script src="./static/app/js/decodebits.js"></script>
 </body>
 </html>
