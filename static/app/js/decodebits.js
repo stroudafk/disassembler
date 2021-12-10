@@ -113,7 +113,6 @@ function test(){
       //  instance = i_instructions.get(opcode)}
       //else if(instType === 'J'){
       //  instance = j_instructions.get(opcode)}
-      }
       //else if(instType === 'F'){}
       let format = verilog_keys.get(instance);
       let fields = parseInt(format.substr(0,1))
@@ -126,8 +125,6 @@ function test(){
       }else{
         for(let k = 0; k<format.length; k+=2){
           let temp = format[0+k] + format[1+k]
-		console.log('where stuck? k = ');
-console.log(k);
           if(temp === 'rs'){
 	    instance += ' ';
 	    let rs = separateRS(line)
@@ -154,7 +151,7 @@ console.log(k);
 }
       i = j+1;
     }
-
+}
 
 
 
