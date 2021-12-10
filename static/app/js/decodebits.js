@@ -11,7 +11,7 @@ input.style.opacity = 0;
 input.addEventListener('change', validateInput);
 function validateInput(){
   alert('Received file');
-  start('00000001000010010010000000100000\n00000001000010010010000000100000\n');
+  start('00000001001010100100000000100000\n00000001000010010010000000100000\n');
 
 }
 
@@ -122,9 +122,10 @@ function test(){
       }else if (fields === 1){
         instance += ' label'
 	output.push(instance)
-      }else{
+      }else{ console.log(instance)
         for(let k = 0; k<format.length; k+=2){
           let temp = format[0+k] + format[1+k]
+		console.log(temp)
           if(temp === 'rs'){
 	    instance += ' ';
 	    let rs = separateRS(line)
@@ -148,8 +149,8 @@ function test(){
 	      break
             }
           }
-}
-      i = j+1;
+       }
+     i = j+1;
     }
 }
 
@@ -162,16 +163,17 @@ function test(){
     return instruction.substr(6,5);
   }  
   function separateRT(instruction){  
-    return instruction.substr(12,5);  
+    return instruction.substr(11,5);  
   }
   function separateRD(instruction){  
-    return instruction.substr(17,5);
+    return instruction.substr(16,5);
   }  
   function computeRegister(regBits){
     var pos = parseInt(regBits, 2)
-//    console.log(pos)
+    console.log(pos)
 var register = registers[pos]
-    return register //returns string of decoded register vals
+    console.log(register)
+return register //returns string of decoded register vals
   }
   function decodeShamt(shamtBits){
     var shamt = instruction.substr(6,5);
