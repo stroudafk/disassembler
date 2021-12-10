@@ -11,7 +11,8 @@ input.style.opacity = 0;
 input.addEventListener('change', validateInput);
 function validateInput(){
   alert('Received file');
-  start(';lkj;lkj;lkj;lkj \n ;lkj;lkj;klj;klj \n lkj;lkjlkj');
+  start('00000001000010010010000000100000\n00000001000010010010000000100000\n');
+
 }
 
 
@@ -68,7 +69,7 @@ function test(){
   //TODO: ask about lwc1, ldc1, swc1, and sdc1, then add to map
 
   const j_instructions = new Map([[0x2, 'j'], [0x3, 'jal']]);
-  const verilog_keys = new Map([['add','3rdrsrt'],['addu', '3rdrsrt'],['and','3rdrsrt'],['break', '0'],['div', '2rsrt'],['divu', '2rsrt'],['jr', '1rs'],['mfhi', '1rd'],['mflo', '1rd'],['mult','2rsrt'], ['multu', '2rsrt'],['nor', '3rdrsrt'], ['or', '3rdrsrt'], ['or', '3rdrsrt'], ['sll', '3rdrtsa'],['sllv', '3rdrtrs'],['slt','3rdrsrt'],['sltu','3rdrsrt'],['sra', '3rdrtsa'], ['srl', '3rdrtrs'],['srlv', '3rdrsrt'],['sub', '3rdrsrt'],['subu', '3rdrsrt'],['syscall', '0'],['addi', '3rtrsim'],['addiu', '3rtrsim'],['andi', '3rtrsim'],['beq', '3rsrtlabel'],['bgez','2rslabel'],['bgtz','2rslabel'],['blez','2rslabel'],['bltz','2rslabel'],['bne','3rsrtlabel'],['lb', '2rtim(rs)'],['lbu','2rtim(rs)'],['lh', '2rtim(rs)'],['lhu','2rsim(rs)'],['lui','2rtim'],['lw','2rtim(rs)'],['lwcl', '2rtim(rs)'],['ori','3rtrsim'],['sb','2im(rs)'],['slti','3rtrsim'],['sltiu','3rtrsim'],['sh', '2rtim(rs)'],['sw','2rtim(rs'],['swcl','2rtim(rs)'],['xori','3rtrsim'],['j','1label'],['jal','1label']]);
+  const verilog_keys = new Map([['add','3rdrsrt'],['addu', '3rdrsrt'],['and','3rdrsrt'],['break', '0'],['div', '2rsrt'],['divu', '2rsrt'],['jr', '1rs'],['mfhi', '1rd'],['mflo', '1rd'],['mult','2rsrt'], ['multu', '2rsrt'],['nor', '3rdrsrt'], ['or', '3rdrsrt'], ['or', '3rdrsrt'], ['sll', '3rdrtsa'],['sllv', '3rdrtrs'],['slt','3rdrsrt'],['sltu','3rdrsrt'],['sra', '3rdrtsa'], ['srl', '3rdrtrs'],['srlv', '3rdrsrt'],['sub', '3rdrsrt'],['subu', '3rdrsrt'],['syscall', '0'],['addi', '3rtrsim'],['addiu', '3rtrsim'],['andi', '3rtrsim'],['beq', '3rsrtlabel'],['bgez','2rslabel'],['bgtz','2rslabel'],['blez','2rslabel'],['bltz','2rslabel'],['bne','3rsrtlabel'],['lb', '2rtim(rs)'],['lbu','2rtim(rs)'],['lh', '2rtim(rs)'],['lhu','2rsim(rs)'],['lui','2rtim'],['lw','2rtim(rs)'],['lwcl', '2rtim(rs)'],['ori','3rtrsim'],['sb','2im(rs)'],['slti','3rtrsim'],['sltiu','3rtrsim'],['sh', '2rtim(rs)'],['sw','2rtim(rs)'],['swcl','2rtim(rs)'],['xori','3rtrsim'],['j','1label'],['jal','1label']]);
 
   function getOpcode(instruction = '0123456'){
     return instruction.substr(0,6)
@@ -99,16 +100,61 @@ function test(){
     var j = 0;
     while((j = instructions.indexOf(delimiter, i)) !== -1){
       var line = instructions.substring(i,j)
-      console.log(line);
       var opcode = getOpcode(line);
-      var instType = getInstructionType(opcode);
+      var instType = getInstrType(opcode);
+      var instance=""
       if(instType === 'R'){
-        var funct = 
-        var instance = 
-
-      }   
+        var funct = decodeFunct(line)
+        instance = r_instructions.get(funct); 
+        console.log(instance);
+         
+      }
+      //else if (instType === 'I'){
+      //  instance = i_instructions.get(opcode)}
+      //else if(instType === 'J'){
+      //  instance = j_instructions.get(opcode)}
+      }
+      //else if(instType === 'F'){}
+      let format = verilog_keys.get(instance);
+      let fields = parseInt(format.substr(0,1))
+      format = format.substr(1,format.length-1)
+      if(fields === 0){
+        output.push(instance)
+      }else if (fields === 1){
+        instance += ' label'
+	output.push(instance)
+      }else{
+        for(let k = 0; k<format.length; k+=2){
+          let temp = format[0+k] + format[1+k]
+		console.log('where stuck? k = ');
+console.log(k);
+          if(temp === 'rs'){
+	    instance += ' ';
+	    let rs = separateRS(line)
+	    instance += computeRegister(rs)
+          }else if(temp === 'rt'){
+	    instance += ' ';
+	    let rt = separateRT(line)
+	    instance += computeRegister(rt)
+          }else if (temp === 'rd'){
+	    instance += ' ';
+	    let rd = separateRD(line)
+            instance += computeRegister(rd)
+          }
+          else if(temp === 'im'){
+            let im = decodeImmediate(line)
+            instance += ' '
+            instance += im;
+            if(k+2 < fields.length){
+              instance += '('
+	      instance += computerRegister(separateRS(line))
+	      break
+            }
+          }
+}
       i = j+1;
     }
+
 
 
 
@@ -125,20 +171,22 @@ function test(){
     return instruction.substr(17,5);
   }  
   function computeRegister(regBits){
-    var register = registers[parseInt(regBits, 10)]
-    return register
+    var pos = parseInt(regBits, 2)
+//    console.log(pos)
+var register = registers[pos]
+    return register //returns string of decoded register vals
   }
   function decodeShamt(shamtBits){
     var shamt = instruction.substr(6,5);
-    return parseInt(shamt, 10)
+    return parseInt(shamt, 2)
   }
   function decodeFunct(instruction){
     var funct = instruction.substr(26,6);
-    return parseInt(funct,16)
+    return parseInt(funct,2)
   }
   function decodeImmediate(instruction){
     var immediate = instruction.substr(16,16);
-    return parseInt(immediate,16)
+    return parseInt(immediate,2)
   }
   function decodeAddress(addressBits){
     var address = instruction.substr(6,26);
@@ -174,14 +222,4 @@ function dragOverHandler(ev) {
   // Prevent default behavior (Prevent file from being opened)
   ev.preventDefault();
 }
-  function formatR(instr){
-    //numerical values of instruction segments
-    //5 bit segments
-    //rs = 
-    //rt = 
-    //rd = 
-    //shamt = 
-    //6 bit segment
-    //funct =  
-  }
 
