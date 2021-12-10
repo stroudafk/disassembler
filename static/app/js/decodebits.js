@@ -68,7 +68,7 @@ function test(){
   //TODO: ask about lwc1, ldc1, swc1, and sdc1, then add to map
 
   const j_instructions = new Map([[0x2, 'j'], [0x3, 'jal']]);
-  const verilog_keys = new Map([['add','3rdrsrt'],['addu', '3rdrsrt'],['and','3rdrsrt'],['break', '0'],['div', '2rsrt'],['divu', '2rsrt'],['jr', '1rs'],['mfhi', '1rd'],['mflo', '1rd'],['mult','2rsrt'], ['multu', '2rsrt'],['nor', '3rdrsrt'], ['or', '3rdrsrt'], ['or', '3rdrsrt'], ['sll', '3rdrtsa'],['sllv', '3rdrtrs'],['slt','3rdrsrt'],['sltu','3rdrsrt'],['sra', '3rdrtsa'], ['srl', '3rdrtrs'],['srlv', '3rdrsrt'],['sub', '3rdrsrt'],['subu', '3rdrsrt'],['syscall', '0']])
+  const verilog_keys = new Map([['add','3rdrsrt'],['addu', '3rdrsrt'],['and','3rdrsrt'],['break', '0'],['div', '2rsrt'],['divu', '2rsrt'],['jr', '1rs'],['mfhi', '1rd'],['mflo', '1rd'],['mult','2rsrt'], ['multu', '2rsrt'],['nor', '3rdrsrt'], ['or', '3rdrsrt'], ['or', '3rdrsrt'], ['sll', '3rdrtsa'],['sllv', '3rdrtrs'],['slt','3rdrsrt'],['sltu','3rdrsrt'],['sra', '3rdrtsa'], ['srl', '3rdrtrs'],['srlv', '3rdrsrt'],['sub', '3rdrsrt'],['subu', '3rdrsrt'],['syscall', '0']['addi', '3rtrsim'],['addiu', '3rtrsim'],['andi', '3rtrsim'],['beq', '3rsrtlabel'],['bgez','2rslabel'],['bgtz','2rslabel'],['blez','2rslabel'],['bltz','2rslabel'],['bne','3rsrtlabel'],['lb', '2rtim(rs)'],['lbu','2rtim(rs)'],['lh', '2rtim(rs)'],['lhu','2rsim(rs)'],['lui','2rtim'],['lw','2rtim(rs)'],['lwcl', '2rtim(rs)'],['ori','3rtrsim'],['sb','2im(rs)'],['slti','3rtrsim'],['sltiu','3rtrsim'],['sh', '2rtim(rs)'],['sw','2rtim(rs'],['swcl','2rtim(rs)'],[['xori','3rtrsim'],['j','1label'],['jal','1label']]);
 
   function getOpcode(instruction = '0123456'){
     return instruction.substr(0,6)
