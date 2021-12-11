@@ -11,12 +11,9 @@ input.style.opacity = 0;
 input.addEventListener('change', validateInput);
 function validateInput(){
   alert('Received file');
-  start('00000001001010100100000000100000\n00000001000010010010000000100000\n');
+  start('00000000000000000000000000001100\n00000001001010100100000000100000\n00000001000010010010000000100000\n');
 
 }
-
-
-
 
 function test(){
   console.log("testing");
@@ -57,7 +54,7 @@ function test(){
     [0x20, 'add'], [0x21, 'addu'], [0x24, 'and'], [0x08, 'jr'], [0x27, 'nor'], 
     [0x25, 'or'], [0x2a, 'slt'], [ 0x2b, 'sltu',], [0x00, 'sll',], [0x02, 'srl',], 
     [0x22, 'sub'], [0x23, 'subu'], [0x1a, 'div'], [0x1b, 'divu'], [0x10, 'mfhi'], 
-    [ 0x12, 'mflo'], [0x0, 'mfc0'], [0x18, 'mult'], [0x19, 'multu'], [0x3, 'sra']]);
+    [ 0x12, 'mflo'], [0x0, 'mfc0'], [0x18, 'mult'], [0x19, 'multu'], [0x3, 'sra'],[0xc, 'syscall'],[0xd,'break']]);
 
   //the i and j types will hold pairs of the string and opcode, where the opcode 
   // is the key and the instruction is the value 
@@ -82,7 +79,7 @@ function test(){
       return 'R'
     }
     else if(decoded === 0x11){
-      return 'FR' //TODO: for now. will change to handle FI types later
+      return 'F' //TODO: for now. will change to handle FI types later
     }
     else{
       if(i_instructions.has(decoded)){
@@ -95,11 +92,13 @@ function test(){
   }
   function start(instructions){
     var delimiter = '\n'      
-    var output = "";
+    const output=[];
     var i = 0;
     var j = 0;
     while((j = instructions.indexOf(delimiter, i)) !== -1){
-      var line = instructions.substring(i,j)
+      console.log('inside while')
+console.logconsole.log(j)
+var line = instructions.substring(i,j)
       var opcode = getOpcode(line);
       var instType = getInstrType(opcode);
       var instance=""
@@ -107,22 +106,28 @@ function test(){
         var funct = decodeFunct(line)
         instance = r_instructions.get(funct); 
         console.log(instance);
-         
       }
       //else if (instType === 'I'){
-      //  instance = i_instructions.get(opcode)}
+       // instance = i_instructions.get(opcode)
+      //}
       //else if(instType === 'J'){
-      //  instance = j_instructions.get(opcode)}
-      //else if(instType === 'F'){}
+        //instance = j_instructions.get(opcode)
+      //}
+      //else if(instType === 'F'){
+        //output.push('FI and FR instructions not yet implemented')
+      //continue
+      //}
       let format = verilog_keys.get(instance);
       let fields = parseInt(format.substr(0,1))
       format = format.substr(1,format.length-1)
       if(fields === 0){
         output.push(instance)
+	continue
       }else if (fields === 1){
         instance += ' label'
 	output.push(instance)
-      }else{ console.log(instance)
+      }else{
+	console.log(instance)
         for(let k = 0; k<format.length; k+=2){
           let temp = format[0+k] + format[1+k]
 		console.log(temp)
@@ -150,13 +155,10 @@ function test(){
             }
           }
        }
-     i = j+1;
     }
-}
-
-
-
-    console.log(instructions.substring(i));
+     i = j+1;
+   }
+    //console.log(instructions.substring(i));
     return output
   }
   function separateRS(instruction){
