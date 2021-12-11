@@ -1,8 +1,5 @@
 //only takes 32bit instructions
 //check that instruction.length === 32 before calling
-//  document.getElementById("btn").onclick = test();  
-  //var x = 
-  //document.getElementById('btn').onclick = test()
 
 const input = document.querySelector('input');
 const preview = document.querySelector('.preview');
@@ -14,35 +11,6 @@ function validateInput(){
   start('00001000000100000000000000000001\n00100001001010000000000000001111\n00000000010000000000000000001000\n00000000000000000000000000001100\n00000001001010100100000000100000\n00000001000010010010000000100000\n');
 
 }
-
-function test(){
-  console.log("testing");
-  }
-  var goBtn = document.getElementById("btn");
-  if (goBtn.addEventListener)
-    goBtn.addEventListener("click", decodeInstruction, false);
-  else if (goBtn.attachEvent)
-    goBtn.attachEvent('onclick', decodeInstruction);
-  var textInput = document.getElementById("bitstring");
-    textInput.maxlength = 32;
-  function testInput(){
-    console.log(textInput.value)
-  }
-  function decodeInstruction(){
-    console.log("decoding instruction. please wait...")
-    var bits = textInput.value 
-    if(bits.length != 32){
-      alert("Uh oh! Recieved less than 32 bits.");
-    }
-    else{
-      let opcode = getOpcode(bits);
-      let instType = getInstrType(opcode);
-      console.log(opcode)
-      console.log(instType)
-    }
-  }
-
-
   // the r type instructions map will hold pairs of the instruction string and 
     // funct code where the key is the hex funct, and the value is the string
   const registers = ['$zero', '$at', '$v0', '$v1', '$a0', '$a1', '$a2', '$a3', 
@@ -68,29 +36,6 @@ function test(){
   const j_instructions = new Map([[0x2, 'j'], [0x3, 'jal']]);
   const verilog_keys = new Map([['add','3rdrsrt'],['addu', '3rdrsrt'],['and','3rdrsrt'],['break', '0'],['div', '2rsrt'],['divu', '2rsrt'],['jr', '1rs'],['mfhi', '1rd'],['mflo', '1rd'],['mult','2rsrt'], ['multu', '2rsrt'],['nor', '3rdrsrt'], ['or', '3rdrsrt'], ['or', '3rdrsrt'], ['sll', '3rdrtsa'],['sllv', '3rdrtrs'],['slt','3rdrsrt'],['sltu','3rdrsrt'],['sra', '3rdrtsa'], ['srl', '3rdrtrs'],['srlv', '3rdrsrt'],['sub', '3rdrsrt'],['subu', '3rdrsrt'],['syscall', '0'],['addi', '3rtrsim'],['addiu', '3rtrsim'],['andi', '3rtrsim'],['beq', '3rsrtlabel'],['bgez','2rslabel'],['bgtz','2rslabel'],['blez','2rslabel'],['bltz','2rslabel'],['bne','3rsrtlabel'],['lb', '2rtim(rs)'],['lbu','2rtim(rs)'],['lh', '2rtim(rs)'],['lhu','2rsim(rs)'],['lui','2rtim'],['lw','2rtim(rs)'],['lwcl', '2rtim(rs)'],['ori','3rtrsim'],['sb','2im(rs)'],['slti','3rtrsim'],['sltiu','3rtrsim'],['sh', '2rtim(rs)'],['sw','2rtim(rs)'],['swcl','2rtim(rs)'],['xori','3rtrsim'],['j','1label'],['jal','1label'],['jr','1rs']]);
 
-
-  function getOpcode(instruction = '0123456'){
-    return instruction.substr(0,6)
-  }
-
-  //if opcode == 11(hex), FR or FI type
-  function getInstrType(opcode = '000000'){
-    let decoded = parseInt(opcode, 2)
-    if(decoded === 0){
-      return 'R'
-    }
-    else if(decoded === 0x11){
-      return 'F' //TODO: for now. will change to handle FI types later
-    }
-    else{
-      if(i_instructions.has(decoded)){
-        return 'I'
-      }
-      else if(j_instructions.has(decoded)){
-        return 'J'
-      }
-    }
-  }
   function start(instructions){
     var delimiter = '\n'      
     const output=[];
@@ -179,6 +124,28 @@ console.log(instType)
     console.log(output)
     return output
   }
+  function getOpcode(instruction = '0123456'){
+    return instruction.substr(0,6)
+  }
+
+  //if opcode == 11(hex), FR or FI type
+  function getInstrType(opcode = '000000'){
+    let decoded = parseInt(opcode, 2)
+    if(decoded === 0){
+      return 'R'
+    }
+    else if(decoded === 0x11){
+      return 'F' //TODO: for now. will change to handle FI types later
+    }
+    else{
+      if(i_instructions.has(decoded)){
+        return 'I'
+      }
+      else if(j_instructions.has(decoded)){
+        return 'J'
+      }
+    }
+  }
   function separateRS(instruction){
     return instruction.substr(6,5);
   }  
@@ -191,9 +158,9 @@ console.log(instType)
   function computeRegister(regBits){
     var pos = parseInt(regBits, 2)
     console.log(pos)
-var register = registers[pos]
+    var register = registers[pos]
     console.log(register)
-return register //returns string of decoded register vals
+    return register //returns string of decoded register vals
   }
   function decodeShamt(shamtBits){
     var shamt = instruction.substr(6,5);
@@ -211,7 +178,6 @@ return register //returns string of decoded register vals
     var address = instruction.substr(6,26);
     return parseInt(address, 2)
   }
-
 
 function dropHandler(ev) {
   console.log('File(s) dropped');
