@@ -2,20 +2,15 @@
 <html>
 <head>
   <title>Disassembler Test Interface</title>
-  <h1>Disassembler Test Interface</h1>
   <link rel="stylesheet" type="text/css" href="./static/app/css/style.css">
   <link rel="icon" href="./static/app/css/favicon.ico" />
 </head>
 <body>
-  <div class='ctrlPanel'>
-  <label id="bitstringLabel" for="bitstring">Enter 32 characters of 0 or 1:</label>
-  <textarea id="bitstring" name="bitstring" rows="4" cols="50"></textarea>
-  <button id="btn" class="favorite styled" type="button">go!</button>
-  </div>
   <div class="input">
     <div id="canvas">
       <div id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
         <p>drag &amp drop .txt files</p>
+	<img src="./files/media/up-arrow.png" alt="upload-file">
       </div>
       <div class="file-btn">
         <form id="selector-area" method="post" enctype="multipart/form-data">
