@@ -24,8 +24,7 @@
   text-align: center;
 }
 #upload-img{
-  height: 300px;
-  width: 300px;
+  object-fit: contain;
 }
 h1 {
   text-align: center;
