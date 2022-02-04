@@ -41,8 +41,8 @@ Drag and drop a txt file into the file field on the left. Don't have a txt file?
 - [ ] add animation for processes that may take a while
 - [ ] add transition animation to smooth out abrupt changes
 
-Users can: 
-- [ ] download output file
+Future implementations: 
+- [x] download output file
 - [ ] click on an instruction type to see more info
 - [x] drag and drop a file
 - [ ] upload multiple files
